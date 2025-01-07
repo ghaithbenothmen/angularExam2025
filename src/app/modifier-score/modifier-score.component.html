@@ -1,0 +1,14 @@
+<form [formGroup]="scoreForm" (ngSubmit)="updateScore()">
+    <div class="form-group">
+        <label for="menuName">Score EquipeA</label>
+        <input type="number" class="form-control" id="scoreA" formControlName="scoreA">
+       
+    </div>
+    <div class="form-group">
+        <label for="menuName">Score EquipeB</label>
+        <input type="number" class="form-control" id="scoreB" formControlName="scoreB">
+       
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="scoreForm.invalid">Submit</button>
+   
+</form>

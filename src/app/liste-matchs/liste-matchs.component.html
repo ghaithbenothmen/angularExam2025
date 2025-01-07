@@ -1,0 +1,6 @@
+<div *ngFor="let match of matchs">
+    <p>Match {{match.id}} : {{match.equipeA.nom}} ({{match.score.equipeA}})- {{match.equipeB.nom}} ({{match.score.equipeB}}) </p>
+    
+ 
+<p>   <a [routerLink]="['/modifier-score',match.id]" class="btn btn-primary">Modifier Score</a></p>
+</div>

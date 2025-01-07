@@ -1,0 +1,40 @@
+<form [formGroup]="matchForm" (ngSubmit)="addMatch()">
+    <div class="form-group">
+        <label for="menuName">Date</label>
+        <input type="date" class="form-control" id="date" formControlName="date">
+        <small *ngIf="matchForm.get('date')?.errors?.['required']">La date est requis.</small>
+        <small *ngIf="matchForm.get('date')?.errors?.['dateValidator']">La date doit être superieur a aujourdhui.</small>
+    </div>
+    <div class="form-group">
+        <label for="menuName">Heure</label>
+        <input type="time" class="form-control" id="heure" formControlName="heure">
+        <small *ngIf="matchForm.get('heure')?.errors?.['required']">L'heure est requis.</small>
+    </div>
+    <div class="form-group">
+        <label for="menuName">Lieu</label>
+        <input type="text" class="form-control" id="lieux" formControlName="lieu">
+        <small *ngIf="matchForm.get('lieu')?.errors?.['required']">Le lieu est requis.</small>
+      
+    </div>
+    <div class="form-group">
+        <label for="menuName">EquipeA</label>
+        <select class="form-control" id="equipeA" formControlName="equipeA">
+            <option *ngFor="let equipe of equipes" [value]="equipe.id">{{equipe.nom}}</option>
+        </select>
+        <small *ngIf="matchForm.get('equipeA')?.errors?.['required']">L'equipeA est requis.</small>
+
+      
+    </div>
+    <div class="form-group">
+        <label for="menuName">EquipeB</label>
+        <select class="form-control" id="equipeB" formControlName="equipeB">
+            <option *ngFor="let equipe of equipes" [value]="equipe.id">{{equipe.nom}}</option>
+        </select>
+        <small *ngIf="matchForm.get('equipeB')?.errors?.['required']">L'equipeB est requis.</small>
+        
+    </div>
+    <small *ngIf="matchForm.get('equipeB')?.errors?.['equipesDifferentesValidator']">Les equipes doivent etre differentes.</small>
+ 
+
+    <button type="submit" class="btn btn-primary" [disabled]="matchForm.invalid">Submit</button>
+</form>

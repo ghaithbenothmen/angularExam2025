@@ -1,0 +1,66 @@
+{
+  "equipes": [
+    {
+      "id": "1",
+      "nom": "Equipe 1",
+      "natif": "Senior"
+    },
+    {
+      "id": "2",
+      "nom": "Equipe 2",
+      "natif": "Junior"
+    },
+    {
+      "id": "3",
+      "nom": "Equipe 3",
+      "natif": "Senior"
+    },
+    {
+      "id": "4",
+      "nom": "Equipe 4",
+      "natif": "Junior"
+    }
+  ],
+  "matchs": [
+    {
+        "id": "1",
+        "date": "2025-01-17",
+        "heure": "10:08",
+        "lieu": "hhttjuyry",
+        "equipeA": {
+          "id": "1",
+          "nom": "Equipe 1",
+          "natif": "Senior"
+        },
+        "equipeB": {
+          "id": "2",
+          "nom": "Equipe 2",
+          "natif": "Junior"
+        },
+        "score": {
+          "equipeA": 0,
+          "equipeB": 0
+        }
+      },
+    {
+      "id": "2",
+      "date": "2025-01-17",
+      "heure": "10:08",
+      "lieu": "hhttjuyry",
+      "equipeA": {
+        "id": "1",
+        "nom": "Equipe 1",
+        "natif": "Senior"
+      },
+      "equipeB": {
+        "id": "2",
+        "nom": "Equipe 2",
+        "natif": "Junior"
+      },
+      "score": {
+        "equipeA": 0,
+        "equipeB": 0
+      }
+    }
+  ]
+}
