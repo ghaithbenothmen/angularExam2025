@@ -1,40 +1,67 @@
 <form [formGroup]="matchForm" (ngSubmit)="addMatch()">
+    <!-- Date -->
     <div class="form-group">
-        <label for="menuName">Date</label>
-        <input type="date" class="form-control" id="date" formControlName="date">
-        <small *ngIf="matchForm.get('date')?.errors?.['required']">La date est requis.</small>
-        <small *ngIf="matchForm.get('date')?.errors?.['dateValidator']">La date doit être superieur a aujourdhui.</small>
+      <label for="date">Date</label>
+      <input type="date" class="form-control" id="date" formControlName="date">
+      <small class="text-danger" *ngIf="matchForm.get('date')?.hasError('required') && matchForm.get('date')?.touched">
+        La date est requise.
+      </small>
+      <small class="text-danger" *ngIf="matchForm.get('date')?.hasError('dateValidator') && matchForm.get('date')?.touched">
+        La date doit être supérieure à aujourd'hui.
+      </small>
     </div>
+  
+    <!-- Heure -->
     <div class="form-group">
-        <label for="menuName">Heure</label>
-        <input type="time" class="form-control" id="heure" formControlName="heure">
-        <small *ngIf="matchForm.get('heure')?.errors?.['required']">L'heure est requis.</small>
+      <label for="heure">Heure</label>
+      <input type="time" class="form-control" id="heure" formControlName="heure">
+      <small class="text-danger" *ngIf="matchForm.get('heure')?.hasError('required') && matchForm.get('heure')?.touched">
+        L'heure est requise.
+      </small>
     </div>
+  
+    <!-- Lieu -->
     <div class="form-group">
-        <label for="menuName">Lieu</label>
-        <input type="text" class="form-control" id="lieux" formControlName="lieu">
-        <small *ngIf="matchForm.get('lieu')?.errors?.['required']">Le lieu est requis.</small>
-      
+      <label for="lieu">Lieu</label>
+      <input type="text" class="form-control" id="lieu" formControlName="lieu">
+      <small class="text-danger" *ngIf="matchForm.get('lieu')?.hasError('required') && matchForm.get('lieu')?.touched">
+        Le lieu est requis.
+      </small>
     </div>
+  
+    <!-- Équipe A -->
     <div class="form-group">
-        <label for="menuName">EquipeA</label>
-        <select class="form-control" id="equipeA" formControlName="equipeA">
-            <option *ngFor="let equipe of equipes" [value]="equipe.id">{{equipe.nom}}</option>
-        </select>
-        <small *ngIf="matchForm.get('equipeA')?.errors?.['required']">L'equipeA est requis.</small>
-
-      
+      <label for="equipeA">Équipe A</label>
+      <select class="form-control" id="equipeA" formControlName="equipeA">
+        <option *ngFor="let equipe of equipes" [value]="equipe.id">{{ equipe.nom }}</option>
+      </select>
+      <small class="text-danger" *ngIf="matchForm.get('equipeA')?.hasError('required') && matchForm.get('equipeA')?.touched">
+        L'équipe A est requise.
+      </small>
     </div>
+  
+    <!-- Équipe B -->
     <div class="form-group">
-        <label for="menuName">EquipeB</label>
-        <select class="form-control" id="equipeB" formControlName="equipeB">
-            <option *ngFor="let equipe of equipes" [value]="equipe.id">{{equipe.nom}}</option>
-        </select>
-        <small *ngIf="matchForm.get('equipeB')?.errors?.['required']">L'equipeB est requis.</small>
-        
+      <label for="equipeB">Équipe B</label>
+      <select class="form-control" id="equipeB" formControlName="equipeB">
+        <option *ngFor="let equipe of equipes" [value]="equipe.id">{{ equipe.nom }}</option>
+      </select>
+      <small class="text-danger" *ngIf="matchForm.get('equipeB')?.hasError('required') && matchForm.get('equipeB')?.touched">
+        L'équipe B est requise.
+      </small>
     </div>
-    <small *ngIf="matchForm.get('equipeB')?.errors?.['equipesDifferentesValidator']">Les equipes doivent etre differentes.</small>
- 
-
-    <button type="submit" class="btn btn-primary" [disabled]="matchForm.invalid">Submit</button>
-</form>
+  
+    <!-- Validateurs globaux -->
+    <small class="text-danger" *ngIf="matchForm.hasError('equipesDifferentesValidator') && matchForm.touched">
+      Les équipes doivent être différentes.
+    </small>
+    <small class="text-danger" *ngIf="matchForm.hasError('sameNatifValidator') && matchForm.touched">
+      Les équipes doivent avoir le même natif.
+    </small>
+  
+    <!-- Bouton -->
+    <button type="submit" class="btn btn-primary" [disabled]="matchForm.invalid">
+      Ajouter le match
+    </button>
+  </form>
+  
